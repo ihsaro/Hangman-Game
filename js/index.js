@@ -1,5 +1,6 @@
 var randomWord;
 var randomWordToken;
+var trials = 0;
 
 function initGame() {
     var word = document.getElementById("lblWord");
@@ -12,7 +13,7 @@ function initGame() {
 function validateUserInput() {
     var userInput = document.getElementById("txtUserInput");
     var temp = "";
-    if(randomWord.includes(userInput.value)) {
+    if(randomWord.includes(userInput.value) && !randomWordToken.includes(userInput.value)) {
         for(var i = 0; i < randomWord.length; i++) {
             if(randomWord.charAt(i) == userInput.value) {
                 temp += userInput.value;
@@ -24,10 +25,15 @@ function validateUserInput() {
                 temp += randomWordToken[i];
             }
         }
-        alert(temp);
         randomWordToken = temp;
         document.getElementById("lblWord").innerHTML = "WORD: " + randomWordToken;
     }
+    else {
+        trials++;
+        var img = "img/hangman_" + trials + ".png";
+        document.getElementById("imgHangman").src = img;
+    }
+    userInput.value = "";
 }
 
 function setRandomWord() {
