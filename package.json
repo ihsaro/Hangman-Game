@@ -1,0 +1,28 @@
+{
+  "name": "hangman-game",
+  "version": "1.0.0",
+  "description": "A simple hangman game based on the electron framework",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihsaro/Hangman-Game.git"
+  },
+  "keywords": [
+    "game",
+    "hangman",
+    "electron",
+    "simple"
+  ],
+  "author": "HOSSANEE Muhammad Idjaz Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihsaro/Hangman-Game/issues"
+  },
+  "homepage": "https://github.com/ihsaro/Hangman-Game#readme",
+  "devDependencies": {
+    "electron": "^5.0.0"
+  }
+}
