@@ -5,17 +5,17 @@
     <title>Mr. Hangman</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
   </head>
-  <body>
+  <body onload="initGame();">
     <div class="container-fluid">
       <center>
         <h1>Welcome to Mr. Hangman</h1>
       </center>
 
       <center>
-        <img src="img/hangman_one.png"/>
+        <img id="imgHangman" src="img/hangman_one.png"/>
       </center>
 
       <br/>
@@ -26,16 +26,16 @@
       <br/>
 
       <div class="input-group">
-          <input type="text" class="form-control">
+          <input type="text" id="txtUserInput" class="form-control">
           &nbsp;
           <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">Enter</button>
+            <button type="button" id="btnEnter" class="btn btn-primary" onclick="validateUserInput();">Enter</button>
           </span>
         </div><!-- /input-group -->
 
       <br/>
 
-      <label>WORD: </label>
+      <label id="lblWord">WORD: </label>
 
     </div>
   </body>
