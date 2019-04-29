@@ -3,11 +3,7 @@ var randomWordToken;
 var trials = 0;
 
 function initGame() {
-    var word = document.getElementById("lblWord");
-    
     setRandomWord();
-
-    word.innerHTML = "WORD: " + randomWordToken;
 }
 
 function validateUserInput() {
@@ -32,6 +28,14 @@ function validateUserInput() {
         trials++;
         var img = "img/hangman_" + trials + ".png";
         document.getElementById("imgHangman").src = img;
+        if(trials == 9) {
+            /*
+            trials = 0;
+            document.getElementById("imgHangman").src = "";
+            setRandomWord();
+            */
+            setGameOverScreen();
+        }
     }
     userInput.value = "";
 }
@@ -47,5 +51,17 @@ function setRandomWord() {
         randomWordToken += "_";
     }
 
+    document.getElementById("lblWord").innerHTML = "WORD: " + randomWordToken;
+
     alert(randomWord);
+}
+
+function setGameOverScreen() {
+    document.getElementById("txtUserInput").style.visibility = "hidden";
+    document.getElementById("btnEnter").style.visibility = "hidden";
+    document.getElementById("lblWord").style.visibility = "hidden";
+
+    document.getElementById("hGameOver").style.visibility = "visible";
+    document.getElementById("hGameOver").innerHTML = "GAME OVER<br/>The correct word was: " + randomWord;
+    document.getElementById("btnRestart").style.visibility = "visible";
 }

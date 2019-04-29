@@ -9,6 +9,9 @@
   </head>
   <body onload="initGame();">
     <div class="container-fluid">
+
+      <br/>
+
       <center>
         <h1>Welcome to Mr. Hangman</h1>
       </center>
@@ -20,9 +23,6 @@
       <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
-      <br/>
 
       <div class="input-group">
           <input type="text" id="txtUserInput" class="form-control">
@@ -30,11 +30,19 @@
           <span class="input-group-btn">
             <button type="button" id="btnEnter" class="btn btn-primary" onclick="validateUserInput();">Enter</button>
           </span>
-        </div><!-- /input-group -->
+        </div>
 
       <br/>
 
       <label id="lblWord">WORD: </label>
+
+      <center>
+        <h5 id="hGameOver" style="visibility: hidden;"></h5>
+      </center>
+
+      <center>
+        <button id="btnRestart" class="btn btn-primary" style="visibility: hidden;">Restart game!</button>
+      </center>
 
     </div>
   </body>
