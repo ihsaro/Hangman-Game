@@ -28,11 +28,13 @@ function validateUserInput() {
         }
     }
     else {
-        trials++;
-        var img = "img/hangman_" + trials + ".png";
-        document.getElementById("imgHangman").src = img;
-        if(trials == 9) {
-            setGameOverScreen("GAME OVER<br/>The correct word was: " + randomWord);
+        if(!userInput.value == "") {
+            trials++;
+            var img = "img/hangman_" + trials + ".png";
+            document.getElementById("imgHangman").src = img;
+            if(trials == 9) {
+                setGameOverScreen("GAME OVER<br/>The correct word was: " + randomWord);
+            }
         }
     }
     userInput.value = "";
@@ -50,8 +52,6 @@ function setRandomWord() {
     }
 
     document.getElementById("lblWord").innerHTML = "WORD: " + randomWordToken;
-
-    alert(randomWord);
 }
 
 function setGameOverScreen(gameOverMessage) {
