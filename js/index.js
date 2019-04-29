@@ -22,7 +22,10 @@ function validateUserInput() {
             }
         }
         randomWordToken = temp;
-        document.getElementById("lblWord").innerHTML = "WORD: " + randomWordToken;
+
+        var displayedWord = getDisplayedWord();
+
+        document.getElementById("lblWord").innerHTML = "WORD: " + displayedWord;
         if(randomWordToken == randomWord) {
             setGameOverScreen("You correctly guessed the word: " + randomWord);
         }
@@ -51,7 +54,20 @@ function setRandomWord() {
         randomWordToken += "_";
     }
 
-    document.getElementById("lblWord").innerHTML = "WORD: " + randomWordToken;
+    var displayedWord = getDisplayedWord();
+
+    document.getElementById("lblWord").innerHTML = "WORD: " + displayedWord;
+}
+
+function getDisplayedWord() {
+    var displayedWord = "";
+    for(var i = 0; i < randomWordToken.length; i++) {
+        displayedWord += randomWordToken[i];
+        if(i != randomWordToken.length - 1) {
+            displayedWord += " ";
+        }
+    }
+    return displayedWord;
 }
 
 function setGameOverScreen(gameOverMessage) {
