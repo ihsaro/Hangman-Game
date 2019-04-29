@@ -8,11 +8,12 @@ function initGame() {
 
 function validateUserInput() {
     var userInput = document.getElementById("txtUserInput");
+    userInput = userInput.value.toUpperCase();
     var temp = "";
-    if(randomWord.includes(userInput.value) && !randomWordToken.includes(userInput.value)) {
+    if(randomWord.includes(userInput) && !randomWordToken.includes(userInput)) {
         for(var i = 0; i < randomWord.length; i++) {
-            if(randomWord.charAt(i) == userInput.value) {
-                temp += userInput.value;
+            if(randomWord.charAt(i) == userInput) {
+                temp += userInput;
             }
             else if(randomWordToken[i] == "_") {
                 temp += "_";
@@ -31,7 +32,7 @@ function validateUserInput() {
         }
     }
     else {
-        if(!userInput.value == "") {
+        if(!userInput == "") {
             trials++;
             var img = "img/hangman_" + trials + ".png";
             document.getElementById("imgHangman").src = img;
@@ -40,11 +41,11 @@ function validateUserInput() {
             }
         }
     }
-    userInput.value = "";
+    document.getElementById("txtUserInput").value = "";
 }
 
 function setRandomWord() {
-    var words = ["Apple", "Banana", "Phylantrophist", "Psychologist"];
+    var words = ["APPLE", "BANANA", "PHYLANTROPHIST", "PSYCHOLOGIST"];
     var randomWordIndex = Math.floor(Math.random() * (+(words.length - 1) - +0)) + +0;
 
     randomWord = words[randomWordIndex];
