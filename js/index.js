@@ -45,10 +45,12 @@ function validateUserInput() {
 }
 
 function setRandomWord() {
-    var words = ["APPLE", "BANANA", "PHYLANTROPHIST", "PSYCHOLOGIST"];
+    var words = getWordArray();
+    var wordsHint = getWordHintArray();
     var randomWordIndex = Math.floor(Math.random() * (+(words.length - 1) - +0)) + +0;
 
-    randomWord = words[randomWordIndex];
+    randomWord = words[randomWordIndex].toUpperCase();
+    var randomWordHint = wordsHint[randomWordIndex];
     randomWordToken = "";
 
     for(var i = 0; i < randomWord.length; i++) {
@@ -58,6 +60,17 @@ function setRandomWord() {
     var displayedWord = getDisplayedWord();
 
     document.getElementById("lblWord").innerHTML = "WORD: " + displayedWord;
+    document.getElementById("lblHint").innerHTML = "HINT: " + randomWordHint;
+}
+
+// METHOD THAT RETURNS ARRAY OF WORDS
+function getWordArray() {
+    return ["APPLE", "BANANA", "PHYLANTROPHIST", "PSYCHOLOGIST"];
+}
+
+// METHOD THAT RETURNS ASSOCIATED DEFINITION OF WORDS
+function getWordHintArray() {
+    return ["Red fruit", "Long yellow fruit", "Welfare promoter", "Someone who treats the mind"];
 }
 
 function getDisplayedWord() {
@@ -86,6 +99,7 @@ function manipulateGameArea(settingOne, settingTwo, gameOverMessage) {
     document.getElementById("txtUserInput").style.visibility = settingOne;
     document.getElementById("btnEnter").style.visibility = settingOne;
     document.getElementById("lblWord").style.visibility = settingOne;
+    document.getElementById("lblHint").style.visibility = settingOne;
 
     document.getElementById("hGameOver").style.visibility = settingTwo;
     document.getElementById("hGameOver").innerHTML = gameOverMessage;
