@@ -23,18 +23,16 @@ function validateUserInput() {
         }
         randomWordToken = temp;
         document.getElementById("lblWord").innerHTML = "WORD: " + randomWordToken;
+        if(randomWordToken == randomWord) {
+            setGameOverScreen("You correctly guessed the word: " + randomWord);
+        }
     }
     else {
         trials++;
         var img = "img/hangman_" + trials + ".png";
         document.getElementById("imgHangman").src = img;
         if(trials == 9) {
-            /*
-            trials = 0;
-            document.getElementById("imgHangman").src = "";
-            setRandomWord();
-            */
-            setGameOverScreen();
+            setGameOverScreen("GAME OVER<br/>The correct word was: " + randomWord);
         }
     }
     userInput.value = "";
@@ -56,12 +54,23 @@ function setRandomWord() {
     alert(randomWord);
 }
 
-function setGameOverScreen() {
-    document.getElementById("txtUserInput").style.visibility = "hidden";
-    document.getElementById("btnEnter").style.visibility = "hidden";
-    document.getElementById("lblWord").style.visibility = "hidden";
+function setGameOverScreen(gameOverMessage) {
+    manipulateGameArea("hidden", "visible", gameOverMessage);
+}
 
-    document.getElementById("hGameOver").style.visibility = "visible";
-    document.getElementById("hGameOver").innerHTML = "GAME OVER<br/>The correct word was: " + randomWord;
-    document.getElementById("btnRestart").style.visibility = "visible";
+function setGameScreen() {
+    manipulateGameArea("visible", "hidden", "");
+    trials = 0;
+    document.getElementById("imgHangman").src = "";
+    setRandomWord();
+}
+
+function manipulateGameArea(settingOne, settingTwo, gameOverMessage) {
+    document.getElementById("txtUserInput").style.visibility = settingOne;
+    document.getElementById("btnEnter").style.visibility = settingOne;
+    document.getElementById("lblWord").style.visibility = settingOne;
+
+    document.getElementById("hGameOver").style.visibility = settingTwo;
+    document.getElementById("hGameOver").innerHTML = gameOverMessage;
+    document.getElementById("btnRestart").style.visibility = settingTwo;
 }
